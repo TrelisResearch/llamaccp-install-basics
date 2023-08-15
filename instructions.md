@@ -35,8 +35,19 @@
 3. **BLAS Acceleration with OpenBLAS**:
     - Download `OpenBLAS` for Windows.
     - Copy necessary files from the `OpenBLAS` zip to the appropriate `w64devkit` directories.
+
     ```bash
     make LLAMA_OPENBLAS=1
     ```
 
-> **Note**: This is a summarized version. For detailed instructions or troubleshooting, refer to the original documentation.
+## Running the server:
+1. After installation is finished, download the [model weights](https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGML/blob/main/llama-2-7b-chat.ggmlv3.q3_K_M.bin) to your llama.ccp folder
+
+2. cd into your folder from your terminal and run
+    ```
+    ./server -m llama-2-7b-chat.ggmlv3.q3_K_M.bin -ngl 48 -c 2048
+    ```
+
+Note that the '-ngl 48' offloads layers of the model to the GPU.
+
+3. Open the local port that you see in your terminal.
